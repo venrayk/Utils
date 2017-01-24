@@ -411,7 +411,7 @@ Utils.prototype.encodeStr=function(s) {
     });
 }
 //字符串解码 可用于  get 请求 传递中文
-Utils.prototype.decodeStr=function(s) {=
+Utils.prototype.decodeStr=function(s) {
     return unescape(s.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1'));
 }
 
