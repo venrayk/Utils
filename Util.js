@@ -390,7 +390,7 @@ Utils.prototype.getParams=function getParameter(name){
 }
 
 Utils.prototype.getAgeForIdCard=function(IdCard){
-
+        
 }
 
 Utils.prototype.getBrithdayForIdCard=function(IdCard){
@@ -398,20 +398,19 @@ Utils.prototype.getBrithdayForIdCard=function(IdCard){
 }
 
 Utils.prototype.getSexForIdCard=function(IdCard){
-
+        
 }
 
 Utils.prototype.initForm=function(form,data,obj){
-
+        
 }
-
-
+//字符串编码 可用于  get 请求 传递中文
 Utils.prototype.encodeStr=function(s) {
     return escape(s).replace(/%(u[0-9A-F]{4})|(%[0-9A-F]{2})/gm, function($0, $1, $2) {
         return $1 && '\\' + $1.toLowerCase() || unescape($2);
     });
 }
-
+//字符串解码 可用于  get 请求 传递中文
 Utils.prototype.decodeStr=function(s) {=
     return unescape(s.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1'));
 }
