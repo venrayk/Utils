@@ -256,6 +256,9 @@ Array.prototype.find = function (item) {
 }
 
 
+
+
+
 /**
  * 去掉数组中的重复元素
  * @returns {*[]} 去重后的新数组
@@ -270,6 +273,10 @@ Array.prototype.unique = function () {
     }
     return res;
 }
+
+
+
+
 
 /**
  * 删除数组中的元素
@@ -347,6 +354,9 @@ Array.prototype.avg = function () {
 
 
 
+
+
+
 /**
  * pointLength : 小数点位数
  * @returns
@@ -404,15 +414,77 @@ Utils.prototype.getSexForIdCard=function(IdCard){
 Utils.prototype.initForm=function(form,data,obj){
         
 }
-//字符串编码 可用于  get 请求 传递中文
+
+/**
+ * 通过生日获取年龄
+ *  birthday：yyyyMMdd
+ */
+Utils.prototype.getAgeForBrithDay=function(birthday,separator){
+
+    birthday=birthday.replaceAll(separator);
+
+
+    try {
+        var dateStr=birthday.substr(0,10);
+
+        var year=dateStr.substr(0,4);
+        var month=dateStr.substr(5,2);
+
+        var date=new Date();
+
+        var nowYear=date.getFullYear();
+
+        var nowMonth=date.getMonth();
+
+        var age=nowYear-year;
+
+        var ageM=(nowMonth+1)-month;
+
+        if(ageM<0){
+            age-=1;
+            ageM+=12;
+        }
+        var x=(ageM==0) ? '':ageM+'月'
+
+        return age+'岁'+x;
+
+    }  catch(err){
+        return '未知';
+    }
+
+}
+
+
+/**
+ *字符串编码 可用于  get 请求 传递中文
+ */
 Utils.prototype.encodeStr=function(s) {
     return escape(s).replace(/%(u[0-9A-F]{4})|(%[0-9A-F]{2})/gm, function($0, $1, $2) {
         return $1 && '\\' + $1.toLowerCase() || unescape($2);
     });
 }
-//字符串解码 可用于  get 请求 传递中文
+/**
+ *字符串解码 可用于  get 请求 传递中文
+ */
 Utils.prototype.decodeStr=function(s) {
     return unescape(s.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1'));
+}
+
+
+/**
+ * 数组去重：可用于 object
+ *
+ */
+Utils.prototype.arrUnique=function (arr) {
+
+    var unique = {};
+
+    arr.forEach(function(item){
+        unique[ JSON.stringify(item) ] = item;
+    });
+
+    return    arr = Object.keys(unique).map(function(u){return JSON.parse(u) });
+
 }
 
 
