@@ -517,9 +517,22 @@ Utils.prototype.compareArray = function (arrA, arrB, arrAAtrr, arrBAtrr) {
 }
 
 
+/**
+ * 判断数字是否在区间内
+ * @param num
+ * @param regionArr ['最小的数','最大的数值']
+ * @returns {boolean}
+ */
+Utils.prototype.checkRegion=function (num,regionArr) {
 
+    var flag=false;
 
+    if(num>=regionArr[0] && num<=regionArr[1]){
+        flag=true;
+    }
 
+    return flag;
+}
 
 
 
