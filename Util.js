@@ -1,6 +1,6 @@
 //字符串替换
-String.prototype.replaceAll  = function(s1,s2){
-        return this.replace(new RegExp(s1,"gm"),s2);
+String.prototype.replaceAll = function (s1, s2) {
+    return this.replace(new RegExp(s1, "gm"), s2);
 }
 
 /**
@@ -256,9 +256,6 @@ Array.prototype.find = function (item) {
 }
 
 
-
-
-
 /**
  * 去掉数组中的重复元素
  * @returns {*[]} 去重后的新数组
@@ -273,9 +270,6 @@ Array.prototype.unique = function () {
     }
     return res;
 }
-
-
-
 
 
 /**
@@ -304,57 +298,51 @@ Array.prototype.remove = function (item, isAll) {
 }
 
 
-
-
 function cacl(arr, callback) {
-  var ret;
-  for (var i=0; i<arr.length;i++) {
-    ret = callback(arr[i], ret);
-  }
-  return ret;
+    var ret;
+    for (var i = 0; i < arr.length; i++) {
+        ret = callback(arr[i], ret);
+    }
+    return ret;
 }
- 
+
 Array.prototype.max = function () {
-  return cacl(this, function (item, max) {
-    if (!(max > item)) {
-      return item;
-    }
-    else {
-      return max;
-    }
-  });
+    return cacl(this, function (item, max) {
+        if (!(max > item)) {
+            return item;
+        }
+        else {
+            return max;
+        }
+    });
 };
 Array.prototype.min = function () {
-  return cacl(this, function (item, min) {
-    if (!(min < item)) {
-      return item;
-    }
-    else {
-      return min;
-    }
-  });
+    return cacl(this, function (item, min) {
+        if (!(min < item)) {
+            return item;
+        }
+        else {
+            return min;
+        }
+    });
 };
 Array.prototype.sum = function () {
-  return cacl(this, function (item, sum) {
-    if (typeof (sum) == 'undefined') {
-      return item;
-    }
-    else {
-      return sum += item;
-    }
-  });
+    return cacl(this, function (item, sum) {
+        if (typeof (sum) == 'undefined') {
+            return item;
+        }
+        else {
+            return sum += item;
+        }
+    });
 };
 
 Array.prototype.avg = function () {
-  if (this.length == 0) {
-    return 0;
-  }
-  return this.sum(this) / this.length;
+    if (this.length == 0) {
+        return 0;
+    }
+    return this.sum(this) / this.length;
 };
-
-
-
-
 
 
 /**
@@ -372,83 +360,75 @@ Array.prototype.avg = function () {
 //};
 
 
-
-
-
-
-String.prototype.replaceAll  = function(s1,s2){     
-    return this.replace(new RegExp(s1,"gm"),s2);     
+String.prototype.replaceAll = function (s1, s2) {
+    return this.replace(new RegExp(s1, "gm"), s2);
 }
 
 
-
-function  Utils(){
-
-
+function Utils() {
 }
 
 
-Utils.prototype.getParams=function getParameter(name){
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+Utils.prototype.getParams = function getParameter(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
 
-    if(r!=null){
-        return  unescape(r[2]);
+    if (r != null) {
+        return unescape(r[2]);
     }
 
     return null;
 }
 
-Utils.prototype.getAgeForIdCard=function(IdCard){
-        
-}
-
-Utils.prototype.getBrithdayForIdCard=function(IdCard){
+Utils.prototype.getAgeForIdCard = function (IdCard) {
 
 }
 
-Utils.prototype.getSexForIdCard=function(IdCard){
-        
+Utils.prototype.getBrithdayForIdCard = function (IdCard) {
+
 }
 
-Utils.prototype.initForm=function(form,data,obj){
-        
+Utils.prototype.getSexForIdCard = function (IdCard) {
+
+}
+
+Utils.prototype.initForm = function (form, data, obj) {
+
 }
 
 /**
  * 通过生日获取年龄
  *  birthday：yyyyMMdd
  */
-Utils.prototype.getAgeForBrithDay=function(birthday,separator){
+Utils.prototype.getAgeForBrithDay = function (birthday, separator) {
 
-    birthday=birthday.replaceAll(separator);
-
+    birthday = birthday.replaceAll(separator);
 
     try {
-        var dateStr=birthday.substr(0,10);
+        var dateStr = birthday.substr(0, 10);
 
-        var year=dateStr.substr(0,4);
-        var month=dateStr.substr(5,2);
+        var year = dateStr.substr(0, 4);
+        var month = dateStr.substr(5, 2);
 
-        var date=new Date();
+        var date = new Date();
 
-        var nowYear=date.getFullYear();
+        var nowYear = date.getFullYear();
 
-        var nowMonth=date.getMonth();
+        var nowMonth = date.getMonth();
 
-        var age=nowYear-year;
+        var age = nowYear - year;
 
-        var ageM=(nowMonth+1)-month;
+        var ageM = (nowMonth + 1) - month;
 
-        if(ageM<0){
-            age-=1;
-            ageM+=12;
+        if (ageM < 0) {
+            age -= 1;
+            ageM += 12;
         }
-        var x=(ageM==0) ? '':ageM+'月'
+        var x = (ageM == 0) ? '' : ageM + '月'
 
-        return age+'岁'+x;
+        return age + '岁' + x;
 
-    }  catch(err){
+    } catch (err) {
         return '未知';
     }
 
@@ -458,15 +438,15 @@ Utils.prototype.getAgeForBrithDay=function(birthday,separator){
 /**
  *字符串编码 可用于  get 请求 传递中文
  */
-Utils.prototype.encodeStr=function(s) {
-    return escape(s).replace(/%(u[0-9A-F]{4})|(%[0-9A-F]{2})/gm, function($0, $1, $2) {
+Utils.prototype.encodeStr = function (s) {
+    return escape(s).replace(/%(u[0-9A-F]{4})|(%[0-9A-F]{2})/gm, function ($0, $1, $2) {
         return $1 && '\\' + $1.toLowerCase() || unescape($2);
     });
 }
 /**
  *字符串解码 可用于  get 请求 传递中文
  */
-Utils.prototype.decodeStr=function(s) {
+Utils.prototype.decodeStr = function (s) {
     return unescape(s.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1'));
 }
 
@@ -475,17 +455,67 @@ Utils.prototype.decodeStr=function(s) {
  * 数组去重：可用于 object
  *
  */
-Utils.prototype.arrUnique=function (arr) {
+Utils.prototype.arrUnique = function (arr) {
 
     var unique = {};
 
-    arr.forEach(function(item){
-        unique[ JSON.stringify(item) ] = item;
+    arr.forEach(function (item) {
+        unique[JSON.stringify(item)] = item;
     });
 
-    return    arr = Object.keys(unique).map(function(u){return JSON.parse(u) });
+    return arr = Object.keys(unique).map(function (u) {
+        return JSON.parse(u)
+    });
 
 }
+
+
+/**
+ * 去重 返回 arrB 与 arrA 中 arrB不重复部分
+ * @param arrA 目标数组
+ * @param arrB 比对的数组
+ * @param arrAAtrr A数组对象的属性 (需要比对的)
+ * @param arrBAtrr B数组对象的属性 (需要比对的)
+ * @returns arrB 与 arrA 中 arrB不重复部分
+ */
+Utils.prototype.compareArray = function (arrA, arrB, arrAAtrr, arrBAtrr) {
+    var temp = [];
+
+    for (var i = 0; i < arrA.length; i++) {
+
+        for (var j = 0; j < arrB.length; j++) {
+
+
+            if (arrA[i][arrAAtrr] == arrB[j][arrBAtrr]) {
+
+                console.log("重复的有：", arrB[j][arrBAtrr]);
+                temp.push(arrB[j][arrBAtrr]);
+            }
+        }
+    }
+
+    //console.log("temp:",temp);
+
+
+    for (var i = 0; i < temp.length; i++) {
+
+        for (var j = 0; j < arrB.length; j++) {
+
+            console.log(arrB[j][arrBAtrr], temp[i], arrB[j][arrBAtrr] == temp[i]);
+
+            if (arrB[j][arrBAtrr] == temp[i]) {
+                arrB.splice(j, 1);
+            }
+        }
+    }
+
+
+    //  console.log("去重部分剩下部分：",arrB);
+
+
+    return arrB;
+}
+
 
 
 
