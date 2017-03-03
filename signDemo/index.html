@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+		
+	
+<script type="text/javascript" src='md5.min.js'></script>
+<!-- <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script> -->
+<script type="text/javascript" src="sign.js"></script>
+<script type="text/javascript">
+
+var resultData={
+	"nonce_str": "e0b8nd1t3snmbjteb76t6cjd8q0x0aon",
+	"company": "6F79078F79D77550739EF61CD0DC2A83",
+	//"sign": "38387C462729607F06FA0A58D90CB82E",
+	"timeStamp": "1488503479228",
+	"key":"432A7532943C39C1EBE335F10EB2E103"
+}
+
+
+var resultDataSign="38387C462729607F06FA0A58D90CB82E";
+
+var result= new Sign().getSign(resultData);
+
+console.log("result",result,result.sign==resultDataSign);
+
+
+
+// $.getJSON('http://10.2.2.47:8080/guanxing_medical-2.0',result,function(data){
+// 	console.log("data:",data);
+// });
+
+
+
+</script>
+</body>
+</html>

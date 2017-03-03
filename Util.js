@@ -536,3 +536,74 @@ Utils.prototype.checkRegion=function (num,regionArr) {
 
 
 
+/**
+ * 对象转换 string to object
+ * @param list
+ */
+Utils.prototype.changeObj=function (listOrItem) {
+
+
+    //console.log(">>>>>>>>>>",typeof listOrItem);
+
+    if (listOrItem instanceof Array) {
+        var arr = [];
+        for (var i = 0; i < listOrItem.length; i++) {
+
+            var item = listOrItem[i];
+
+            // console.log(">>>>>>>>>>",typeof item == 'string');
+
+
+            if (typeof  item == 'string') {
+
+                arr.push(JSON.parse(listOrItem[i]));
+
+            } else {
+                arr.push(item)
+            }
+
+        }
+
+
+        //console.log(arr);
+
+
+        return arr;
+    } else {
+
+        if (typeof  listOrItem == 'string') {
+
+            return JSON.parse(listOrItem);
+        } else {
+            return listOrItem
+        }
+    }
+
+
+},
+
+
+/**
+ * 判断item 是否在列表中 判断依据为属性
+ * @param item
+ * @param arr
+ * @param itemAttr
+ * @param arritemAttr
+ * @returns {boolean}
+ */
+    Utils.prototype.itemInArray=function (item, arr, itemAttr, arrItemAttr) {
+
+    var flag = false;
+
+    for (var i = 0; i < arr.length; i++) {
+
+        var temp = arr[i];
+
+        if (item[itemAttr] == temp[arrItemAttr]) {
+            flag = true;
+            break
+        }
+    }
+
+    return flag;
+},
