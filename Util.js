@@ -705,7 +705,7 @@ Utils.prototype.numberDiv=function (arg1, arg2){
         r1 = Number(arg1.toString().replace(".",""));
         r2 = Number(arg2.toString().replace(".",""));
 
-        return utilsObj.numberMul((r1/r2), Math.pow(10,t2-t1));
+        return this.numberMul((r1/r2), Math.pow(10,t2-t1));
 
         // with(Math){
         //   r1=Number(arg1.toString().replace(".",""));
